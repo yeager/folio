@@ -2,43 +2,42 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the folio package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Daniel Nylander <po@danielnylander.se>, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: folio 1.0.0\n"
-"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-03-24 09:36+0100\n"
+"Project-Id-Version: folio 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-24 09:56+0100\n"
 "PO-Revision-Date: 2026-03-24 08:25+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
-"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/"
-"306578/sv/)\n"
-"Language: sv\n"
+"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/306578/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/application.py:129
+#: src/application.py:178
 msgid "translator-credits"
 msgstr "Daniel Nylander <daniel@danielnylander.se>"
 
-#: src/application.py:134
+#: src/application.py:183
 msgid "Help Translate"
-msgstr ""
+msgstr "Hjälp till att översätta"
 
-#: src/book_parser.py:234 src/book_parser.py:273 src/book_parser.py:281
+#: src/book_parser.py:350 src/book_parser.py:389 src/book_parser.py:397
 msgid "Chapter"
 msgstr "Kapitel"
 
-#: src/book_parser.py:314
+#: src/book_parser.py:430
 msgid "Page"
 msgstr "Sida"
 
-#: src/book_parser.py:320
+#: src/book_parser.py:436
 msgid "CBR format requires additional software to read"
 msgstr "CBR-format kräver ytterligare programvara för att läsa"
 
@@ -66,154 +65,325 @@ msgstr "Uppdatera bibliotek"
 msgid "Unknown author"
 msgstr "Okänd författare"
 
-#: src/library.py:332
-#, python-brace-format
-msgid "{} of {} books"
-msgstr "{} av {} böcker"
+#: src/library.py:334 src/library.py:339
+msgid "1 book"
+msgstr "1 bok"
 
-#: src/library.py:334
+#: src/library.py:336 src/library.py:341
 #, python-brace-format
 msgid "{} books"
 msgstr "{} böcker"
 
-#: src/reader.py:57
-msgid "Table of Contents"
-msgstr "Innehållsförteckning"
+#: src/library.py:343
+#, python-brace-format
+msgid "{} of {}"
+msgstr "{} av {}"
 
-#: src/reader.py:93 src/reader.py:94 src/window.py:621
+#: src/library.py:346
+#, python-brace-format
+msgid "{} book"
+msgid_plural "{} books"
+msgstr[0] "{} bok"
+msgstr[1] "{} böcker"
+
+#: src/reader.py:88
+msgid "Contents"
+msgstr "Innehåll"
+
+#: src/reader.py:96
+msgid "Add Bookmark"
+msgstr "Lägg till bokmärke"
+
+#: src/reader.py:109
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: src/reader.py:117
+msgid "Export"
+msgstr "Exportera"
+
+#: src/reader.py:130
+msgid "Highlights"
+msgstr "Markering"
+
+#: src/reader.py:150 src/reader.py:151 src/window.py:621
 msgid "Back to library"
 msgstr "Tillbaka till bibliotek"
 
-#: src/reader.py:111
+#: src/reader.py:168
 msgid "Text-to-Speech Controls"
-msgstr ""
+msgstr "Kontroller för talsyntes"
 
-#: src/reader.py:115 src/reader.py:116
+#: src/reader.py:172 src/reader.py:173
 msgid "Play/Pause"
-msgstr ""
+msgstr "Spela upp/Pausa"
 
-#: src/reader.py:123 src/reader.py:124
+#: src/reader.py:180 src/reader.py:181
 msgid "Stop"
 msgstr "Stoppa"
 
-#: src/reader.py:132 src/reader.py:133
+#: src/reader.py:189 src/reader.py:190
 msgid "Speech speed"
-msgstr ""
+msgstr "Talhastighet"
 
-#: src/reader.py:143
+#: src/reader.py:200
+msgid "Search in book (Ctrl+F)"
+msgstr "Sök i bok (Ctrl+F)"
+
+#: src/reader.py:207
+msgid "Add bookmark (Ctrl+B)"
+msgstr "Lägg till bokmärke (Ctrl+B)"
+
+#: src/reader.py:214
 msgid "Reading settings"
 msgstr "Läsinställningar"
 
-#: src/reader.py:147
+#: src/reader.py:218
 msgid "Font size..."
-msgstr ""
+msgstr "Typsnittsstorlek..."
 
-#: src/reader.py:148
+#: src/reader.py:219
+msgid "Reading theme..."
+msgstr "Läser tema..."
+
+#: src/reader.py:220
+msgid "Line spacing..."
+msgstr "Radavstånd..."
+
+#: src/reader.py:221
 msgid "TTS settings..."
-msgstr ""
+msgstr "Inställningar för talsyntes..."
 
-#: src/reader.py:185 src/reader.py:186
+#: src/reader.py:222
+msgid "Dictionary..."
+msgstr "Ordbok..."
+
+#: src/reader.py:223
+msgid "Statistics..."
+msgstr "Statistik..."
+
+#: src/reader.py:236
+msgid "Search in book..."
+msgstr "Sök i bok..."
+
+#: src/reader.py:244
+msgid "Previous match (Shift+Enter)"
+msgstr "Föregående träff (Skift+Enter)"
+
+#: src/reader.py:250
+msgid "Next match (Enter)"
+msgstr "Nästa träff (Enter)"
+
+#: src/reader.py:302 src/reader.py:303
 msgid "Previous chapter"
 msgstr "Föregående kapitel"
 
-#: src/reader.py:200 src/reader.py:201
+#: src/reader.py:317 src/reader.py:318
 msgid "Next chapter"
 msgstr "Nästa kapitel"
 
-#: src/reader.py:499
+#: src/reader.py:684
 #, python-brace-format
 msgid "Speech speed: {}x"
 msgstr "Talhastighet: {}x"
 
-#: src/reader.py:537
+#: src/reader.py:722
 msgid "Font Size"
 msgstr "Teckensnittsstorlek"
 
-#: src/reader.py:540
+#: src/reader.py:725
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/reader.py:541
+#: src/reader.py:726
 msgid "OK"
 msgstr "OK"
 
-#: src/reader.py:545
+#: src/reader.py:730
 msgid "Font size:"
 msgstr "Teckensnittsstorlek:"
 
-#: src/reader.py:576
+#: src/reader.py:761
 msgid "TTS Settings"
 msgstr "Inställningar för talsyntes"
 
-#: src/reader.py:580 src/reader.py:589
+#: src/reader.py:765 src/reader.py:774
 msgid "Voice"
 msgstr "Röst"
 
-#: src/reader.py:584
+#: src/reader.py:769
 msgid "Voice Selection"
 msgstr "Röstval"
 
-#: src/reader.py:604
+#: src/reader.py:789
 msgid "Speed"
 msgstr "Hastighet"
 
-#: src/reader.py:609
+#: src/reader.py:794
 msgid "Speech rate"
 msgstr "Talhastighet"
 
-#: src/reader.py:614
+#: src/reader.py:799
 msgid "Auto page turn"
 msgstr "Automatisk sidvändning"
 
-#: src/reader.py:615
+#: src/reader.py:800
 msgid "Automatically turn to next page after TTS finishes"
 msgstr "Vänd automatiskt till nästa sida efter att talsyntesen är klar"
 
-#: src/reader.py:645
+#: src/reader.py:830
 msgid "Search functionality not yet implemented"
-msgstr ""
+msgstr "Sökfunktionalitet ännu inte implementerad"
+
+#: src/reader.py:980
+msgid "No matches"
+msgstr "Inga träffar"
+
+#: src/reader.py:1046
+msgid "Bookmark added"
+msgstr "Bokmärke lades till"
+
+#: src/reader.py:1051
+msgid "Bookmark already exists here"
+msgstr "Bokmärke finns redan här"
+
+#: src/reader.py:1195
+msgid "No annotations to export"
+msgstr "Inga anteckningar att exportera"
+
+#: src/reader.py:1201
+msgid "Export Annotations"
+msgstr "Exportera anteckningar"
+
+#: src/reader.py:1212
+msgid "Annotations exported successfully"
+msgstr "Anteckningar exporterades"
+
+#: src/reader.py:1237
+msgid "Yellow highlight"
+msgstr "Gul markering"
+
+#: src/reader.py:1238
+msgid "Green highlight"
+msgstr "Grön markering"
+
+#: src/reader.py:1239
+msgid "Blue highlight"
+msgstr "Blå markering"
+
+#: src/reader.py:1240
+msgid "Red highlight"
+msgstr "Röd markering"
+
+#: src/reader.py:1241
+msgid "Orange highlight"
+msgstr "Orange markering"
+
+#: src/reader.py:1242
+msgid "Purple highlight"
+msgstr "Lila markering"
+
+#: src/reader.py:1377
+msgid "Looking up definition..."
+msgstr "Slår upp definition..."
+
+#: src/reader.py:1433
+msgid "Definition not found"
+msgstr "Definitionen hittades inte"
+
+#: src/reader.py:1471
+msgid "Reading Theme"
+msgstr "Läser tema"
+
+#: src/reader.py:1472
+msgid "Choose a reading theme"
+msgstr "Välj ett lästema"
+
+#: src/reader.py:1475
+msgid "Default"
+msgstr "Standard"
+
+#: src/reader.py:1476
+msgid "Sepia"
+msgstr "Sepia"
+
+#: src/reader.py:1477
+msgid "Night"
+msgstr "Natt"
+
+#: src/reader.py:1506 src/reader.py:1515
+msgid "Line Spacing"
+msgstr "Radavstånd"
+
+#: src/reader.py:1516
+msgid "Adjust spacing between lines"
+msgstr "Justera avstånd mellan rader"
+
+#: src/reader.py:1543
+msgid "Dictionary settings - coming soon"
+msgstr "Ordboksinställningar - kommer snart"
+
+#: src/reader.py:1555
+msgid "Reading Statistics"
+msgstr "Lässtatistik"
+
+#: src/reader.py:1566
+msgid "Total reading time"
+msgstr "Total lästid"
+
+#: src/reader.py:1567
+msgid "Pages read"
+msgstr "Sidor lästa"
+
+#: src/reader.py:1568
+msgid "Reading sessions"
+msgstr "Lässessioner"
+
+#: src/reader.py:1572
+msgid "Close"
+msgstr "Stäng"
 
 #: src/tts.py:103
 msgid "Piper TTS not available"
 msgstr "Piper TTS inte tillgänglig"
 
-#: src/tts.py:403
+#: src/tts.py:545
 msgid "Swedish (Alma) - Medium"
 msgstr "Svenska (Alma) - Medium"
 
-#: src/tts.py:404
+#: src/tts.py:546
 msgid "Swedish (Alma) - High Quality"
 msgstr "Svenska (Alma) - Hög kvalitet"
 
-#: src/tts.py:405
+#: src/tts.py:547
 msgid "Swedish (Alma) - Low Quality"
 msgstr "Svenska (Alma) - Låg kvalitet"
 
-#: src/tts.py:406
+#: src/tts.py:548
 msgid "English US (Lessac) - Medium"
 msgstr "Engelska US (Lessac) - Medium"
 
-#: src/tts.py:407
+#: src/tts.py:549
 msgid "English US (Lessac) - High Quality"
 msgstr "Engelska US (Lessac) - Hög kvalitet"
 
-#: src/tts.py:408
+#: src/tts.py:550
 msgid "English UK (Female) - Medium"
 msgstr "Engelska UK (Kvinna) - Medium"
 
-#: src/tts.py:409
+#: src/tts.py:551
 msgid "English US (LibriTTS) - High Quality"
 msgstr "Engelska US (LibriTTS) - Hög kvalitet"
 
-#: src/tts.py:410
+#: src/tts.py:552
 msgid "German (Thorsten) - Medium"
 msgstr "Tyska (Thorsten) - Medium"
 
-#: src/tts.py:411
+#: src/tts.py:553
 msgid "Spanish (Sharvard) - Medium"
 msgstr "Spanska (Sharvard) - Medium"
 
-#: src/tts.py:412
+#: src/tts.py:554
 msgid "French (Siwis) - Medium"
 msgstr "Franska (Siwis) - Medium"
 
@@ -275,7 +445,7 @@ msgstr "Inställningar"
 
 #: src/window.py:64
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Tangentbordsgenvägar"
 
 #: src/window.py:65
 msgid "About"
@@ -358,7 +528,7 @@ msgstr "Tema"
 
 #: src/window.py:384
 msgid "Choose between light, dark, or system theme"
-msgstr ""
+msgstr "Välj mellan ljust, mörkt tema eller följ systemet"
 
 #: src/window.py:386
 msgid "System"
@@ -378,37 +548,37 @@ msgstr "Standard teckensnittsstorlek"
 
 #: src/window.py:416
 msgid "Translation"
-msgstr ""
+msgstr "Översättning"
 
 #: src/window.py:421
 msgid "Help translate Folio"
-msgstr ""
+msgstr "Hjälp till att översätta Folio"
 
 #: src/window.py:422
 msgid "Help translate Folio into your language"
-msgstr ""
+msgstr "Hjälp till att översätta Folio till ditt språk"
 
 #: src/window.py:425
 msgid "Open Transifex"
-msgstr ""
+msgstr "Öppna Transifex"
 
 #: src/window.py:457
 msgid "Drop files to import"
-msgstr ""
+msgstr "Släpp filer att importera"
 
 #: src/window.py:479
 #, python-brace-format
 msgid "Imported: {}"
-msgstr ""
+msgstr "Importerade: {}"
 
 #: src/window.py:481
 msgid "Book already in library"
-msgstr ""
+msgstr "Boken finns redan i biblioteket"
 
 #: src/window.py:485
 #, python-brace-format
 msgid "Error importing file: {}"
-msgstr ""
+msgstr "Fel vid import av fil: {}"
 
 #: src/window.py:528
 msgid "Choose Library Folder"
@@ -420,92 +590,82 @@ msgstr "Biblioteksmapp uppdaterad"
 
 #: src/window.py:581
 msgid "File Operations"
-msgstr ""
+msgstr "Filåtgärder"
 
 #: src/window.py:587
 msgid "Open book file"
-msgstr ""
+msgstr "Öppna bokfil"
 
 #: src/window.py:608
 msgid "Navigation"
-msgstr ""
+msgstr "Navigering"
 
 #: src/window.py:614
 msgid "Search in book"
-msgstr ""
+msgstr "Sök i bok"
 
 #: src/window.py:628
 msgid "Previous page"
-msgstr ""
+msgstr "Föregående sida"
 
 #: src/window.py:634
 msgid "Next page"
-msgstr ""
+msgstr "Nästa sida"
 
 #: src/window.py:641
 msgid "First page"
-msgstr ""
+msgstr "Första sidan"
 
 #: src/window.py:647
 msgid "Last page"
-msgstr ""
+msgstr "Sista sidan"
 
 #: src/window.py:654
 msgid "View"
-msgstr ""
+msgstr "Visa"
 
 #: src/window.py:660
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Växla helskärm"
 
 #: src/window.py:667
 msgid "Increase font size"
-msgstr ""
+msgstr "Öka teckenstorlek"
 
 #: src/window.py:673
 msgid "Decrease font size"
-msgstr ""
+msgstr "Minska teckenstorlek"
 
 #: src/window.py:680
 msgid "Text-to-Speech"
-msgstr ""
+msgstr "Text till tal"
 
 #: src/window.py:686
 msgid "Play/Pause TTS"
-msgstr ""
+msgstr "Spela upp/Pausa talsyntes"
 
 #: src/window.py:693
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: src/window.py:699
 msgid "Show keyboard shortcuts"
-msgstr ""
+msgstr "Visa tangentbordsgenvägar"
 
 #: src/window.py:763
 msgid "Welcome to Folio"
-msgstr ""
+msgstr "Välkommen till Folio"
 
 #: src/window.py:764
 msgid "Open an e-book to start reading, or add books to your library."
 msgstr ""
+"Öppna en e-book för att börja läsa eller lägg till böcker till ditt "
+"bibliotek."
 
 #: src/window.py:779
 msgid "Add Books Folder"
-msgstr ""
+msgstr "Lägg till bokmapp"
 
 #: src/window.py:797
 msgid "Don't show this again"
-msgstr ""
-
-#~ msgid "The Book Reader"
-#~ msgstr "Folio"
-
-#~ msgid "Modern e-book reader with TTS support"
-#~ msgstr "Modern e-boksläsare med TTS-stöd"
-
-#~ msgid "Play"
-#~ msgstr "Spela"
-
-#~ msgid "Pause"
-#~ msgstr "Pausa"
+msgstr "Visa inte igen"
