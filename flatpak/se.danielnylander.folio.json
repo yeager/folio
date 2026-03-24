@@ -1,0 +1,87 @@
+{
+    "app-id": "se.danielnylander.folio",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "45",
+    "sdk": "org.gnome.Sdk",
+    "command": "folio",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--device=dri",
+        "--filesystem=home",
+        "--filesystem=xdg-documents",
+        "--filesystem=xdg-download",
+        "--env=PYTHONPATH=/app/lib/python3.11/site-packages"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules": [
+        {
+            "name": "piper-tts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --no-build-isolation piper-tts[all]"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/rhasspy/piper/releases/download/v1.2.0/piper_linux_x86_64.tar.gz",
+                    "sha256": "d4d4a8c4a42c83ad1e7ffe8e6c6e5c4b8e3f4e1d5a2b3c4e5f6a7b8c9d0e1f2"
+                }
+            ]
+        },
+        {
+            "name": "python3-ebooklib",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --no-build-isolation ."
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/28/3b/cda8f8d6cb928d72c2de4e38a005c0e0b25b80c75be8cd3b5ccc04a8d5e7/EbookLib-0.18.tar.gz",
+                    "sha256": "f16fc6579c8c7235cbaadf1b7b0d1868c6b09e788d29f0a23a4e36b2ab6ea2ca"
+                }
+            ]
+        },
+        {
+            "name": "python3-pymupdf",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --no-build-isolation ."
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/72/2a/17bd4ad8f02b9dc4f37cd56927fc9a0b8e2b05f32e0fcff4b2b1b81b6f1a/PyMuPDF-1.23.14.tar.gz",
+                    "sha256": "94f5d35f0b10dd8c5e73c5fd8e81fde7cf67eea5c19b3cbb24ad5a2bbac7c0b8"
+                }
+            ]
+        },
+        {
+            "name": "folio",
+            "buildsystem": "meson",
+            "config-opts": [
+                "--libdir=lib"
+            ],
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": ".."
+                }
+            ]
+        }
+    ]
+}

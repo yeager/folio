@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="folio">
+  <schema id="se.danielnylander.folio" path="/se/danielnylander/folio/">
+    
+    <!-- Window settings -->
+    <key name="window-width" type="i">
+      <default>1200</default>
+      <summary>Default window width</summary>
+      <description>Default width of the application window</description>
+    </key>
+    
+    <key name="window-height" type="i">
+      <default>800</default>
+      <summary>Default window height</summary>
+      <description>Default height of the application window</description>
+    </key>
+    
+    <key name="window-maximized" type="b">
+      <default>false</default>
+      <summary>Window maximized state</summary>
+      <description>Whether the window should be maximized on startup</description>
+    </key>
+    
+    <!-- Library settings -->
+    <key name="library-path" type="s">
+      <default>"~/Books"</default>
+      <summary>Library folder path</summary>
+      <description>Path to the folder containing the user's e-book collection</description>
+    </key>
+    
+    <!-- Reading settings -->
+    <key name="font-size" type="i">
+      <default>14</default>
+      <summary>Reading font size</summary>
+      <description>Font size used for reading text</description>
+    </key>
+    
+    <key name="theme" type="s">
+      <choices>
+        <choice value="system"/>
+        <choice value="light"/>
+        <choice value="dark"/>
+      </choices>
+      <default>"system"</default>
+      <summary>Application theme</summary>
+      <description>Color theme preference: system, light, or dark</description>
+    </key>
+    
+    <!-- TTS settings -->
+    <key name="tts-voice" type="s">
+      <default>"sv_SE-nst-medium"</default>
+      <summary>TTS voice</summary>
+      <description>Piper voice to use for text-to-speech</description>
+    </key>
+    
+    <key name="tts-speed" type="d">
+      <default>1.0</default>
+      <summary>TTS speech rate</summary>
+      <description>Speech rate for text-to-speech (0.5 to 2.0)</description>
+    </key>
+    
+    <key name="auto-page-turn" type="b">
+      <default>true</default>
+      <summary>Auto page turn</summary>
+      <description>Whether to automatically advance to the next page after TTS finishes</description>
+    </key>
+    
+    <!-- State -->
+    <key name="last-book" type="s">
+      <default>""</default>
+      <summary>Last opened book</summary>
+      <description>Path to the last book that was opened</description>
+    </key>
+    
+    <key name="reading-positions" type="s">
+      <default>"{}"</default>
+      <summary>Reading positions</summary>
+      <description>JSON object storing reading positions for each book</description>
+    </key>
+    
+  </schema>
+</schemalist>

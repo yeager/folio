@@ -1,0 +1,14 @@
+# Core dependencies
+PyGObject>=3.42.0
+ebooklib>=0.18
+PyMuPDF>=1.20.0
+
+# Optional dependencies for enhanced functionality
+# piper-tts>=1.2.0  # For TTS support
+# Pillow>=8.0.0     # For image processing
+
+# Development dependencies (install with pip install -r requirements-dev.txt)
+# pytest>=6.0.0
+# black>=22.0.0
+# flake8>=4.0.0
+# mypy>=0.910

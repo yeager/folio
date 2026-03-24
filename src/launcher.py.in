@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""
+Launcher script for Folio
+"""
+
+import sys
+import os
+import locale
+import gettext
+
+# Set up paths
+sys.path.insert(1, '@pythondir@')
+localedir = '@localedir@'
+
+# Set up locale and gettext
+locale.setlocale(locale.LC_ALL, '')
+gettext.bindtextdomain('folio', localedir)
+gettext.textdomain('folio')
+
+if __name__ == '__main__':
+    from folio.main import main
+    sys.exit(main())

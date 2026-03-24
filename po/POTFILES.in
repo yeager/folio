@@ -1,0 +1,12 @@
+# List of source files containing translatable strings
+src/application.py
+src/book_parser.py
+src/library.py
+src/main.py
+src/reader.py
+src/settings.py
+src/tts.py
+src/utils.py
+src/window.py
+data/se.danielnylander.folio.desktop.in
+data/se.danielnylander.folio.metainfo.xml.in
