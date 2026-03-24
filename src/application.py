@@ -7,7 +7,7 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 
-from gi.repository import Gtk, Adw, Gio, GLib
+from gi.repository import Gtk, Adw, Gio, GLib, Gdk
 import gettext
 import os
 
@@ -71,9 +71,58 @@ class BookReaderApplication(Adw.Application):
 
     def do_activate(self):
         """Called when the application is activated"""
+        # Load CSS if not already loaded
+        if not hasattr(self, 'css_loaded'):
+            self.load_css()
+            self.css_loaded = True
+        
         if not self.window:
             self.window = BookReaderWindow(application=self)
         self.window.present()
+    
+    def load_css(self):
+        """Load application CSS"""
+        # Try to find CSS file
+        css_paths = [
+            "data/style.css",  # When running from source
+            "/usr/share/folio/style.css",  # System installation
+            os.path.join(os.path.dirname(__file__), "../data/style.css")  # Relative path
+        ]
+        
+        css_provider = Gtk.CssProvider()
+        
+        for css_path in css_paths:
+            if os.path.exists(css_path):
+                try:
+                    css_provider.load_from_path(css_path)
+                    Gtk.StyleContext.add_provider_for_display(
+                        Gdk.Display.get_default(),
+                        css_provider,
+                        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+                    )
+                    print(f"Loaded CSS from: {css_path}")
+                    return
+                except Exception as e:
+                    print(f"Failed to load CSS from {css_path}: {e}")
+        
+        # Fallback: load CSS from string
+        css_content = """
+        .sepia-theme { background-color: #F5E6C8; color: #3E2723; }
+        .sepia-theme text { background-color: #F5E6C8; color: #3E2723; }
+        .night-theme { background-color: #1A1A2E; color: #C8B89A; }
+        .night-theme text { background-color: #1A1A2E; color: #C8B89A; }
+        """
+        
+        try:
+            css_provider.load_from_data(css_content.encode())
+            Gtk.StyleContext.add_provider_for_display(
+                Gdk.Display.get_default(),
+                css_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            )
+            print("Loaded fallback CSS")
+        except Exception as e:
+            print(f"Failed to load fallback CSS: {e}")
 
     def do_open(self, files, n_files, hint):
         """Called when the application is asked to open files"""

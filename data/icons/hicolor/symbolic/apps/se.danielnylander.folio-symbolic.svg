@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Open book simplified -->
+  <path d="M 2 4 L 2 13 Q 2 14 3 14 L 7.5 14 Q 8 13.5 8 13 L 8 5 Q 8 4 7 4 Z" 
+        fill="currentColor"/>
+  <path d="M 14 4 L 14 13 Q 14 14 13 14 L 8.5 14 Q 8 13.5 8 13 L 8 5 Q 8 4 9 4 Z" 
+        fill="currentColor"/>
+  
+  <!-- Book binding -->
+  <rect x="7.5" y="4" width="1" height="10" fill="currentColor"/>
+  
+  <!-- Sound wave symbol -->
+  <g transform="translate(11, 8)">
+    <path d="M 0 0 Q 1 -1.5 2 0 Q 1 1.5 0 0" fill="none" stroke="currentColor" stroke-width="0.5"/>
+    <path d="M 2.5 0 Q 4 -2.5 5.5 0 Q 4 2.5 2.5 0" fill="none" stroke="currentColor" stroke-width="0.3"/>
+  </g>
+</svg>

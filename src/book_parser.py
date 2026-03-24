@@ -135,6 +135,12 @@ class EPUBParser(BaseBookParser):
                     desc_elem = opf_root.find('.//dc:description', ns)
                     metadata.description = desc_elem.text if desc_elem is not None else ""
                     
+                    # Extract cover image
+                    cover_data, cover_mime = self._extract_epub_cover(epub_zip, opf_root, opf_path, ns)
+                    if cover_data:
+                        metadata.cover_data = cover_data
+                        metadata.cover_mime_type = cover_mime
+                    
                     # Get content files
                     manifest = opf_root.find('.//opf:manifest', ns)
                     spine = opf_root.find('.//opf:spine', ns)
@@ -164,6 +170,116 @@ class EPUBParser(BaseBookParser):
             metadata.title = os.path.basename(self.file_path)
         
         return metadata
+    
+    def _extract_epub_cover(self, epub_zip, opf_root, opf_path, ns):
+        """Extract cover image from EPUB"""
+        try:
+            opf_dir = os.path.dirname(opf_path)
+            
+            # Method 1: Look for cover-image in metadata
+            meta_cover = opf_root.find('.//opf:meta[@name="cover"]', ns)
+            if meta_cover is not None:
+                cover_id = meta_cover.get('content')
+                if cover_id:
+                    # Find the cover item in manifest
+                    cover_item = opf_root.find(f'.//opf:item[@id="{cover_id}"]', ns)
+                    if cover_item is not None:
+                        cover_href = cover_item.get('href')
+                        cover_type = cover_item.get('media-type', 'image/jpeg')
+                        if cover_href:
+                            cover_path = os.path.join(opf_dir, cover_href).replace('\\', '/')
+                            try:
+                                cover_data = epub_zip.read(cover_path)
+                                return cover_data, cover_type
+                            except:
+                                pass
+            
+            # Method 2: Look for manifest items with properties="cover-image"
+            cover_items = opf_root.findall('.//opf:item[@properties="cover-image"]', ns)
+            for cover_item in cover_items:
+                cover_href = cover_item.get('href')
+                cover_type = cover_item.get('media-type', 'image/jpeg')
+                if cover_href:
+                    cover_path = os.path.join(opf_dir, cover_href).replace('\\', '/')
+                    try:
+                        cover_data = epub_zip.read(cover_path)
+                        return cover_data, cover_type
+                    except:
+                        pass
+            
+            # Method 3: Look for common cover file names
+            cover_patterns = ['cover', 'Cover', 'COVER', 'cover-image', 'coverpage']
+            for pattern in cover_patterns:
+                for ext in ['.jpg', '.jpeg', '.png', '.gif']:
+                    possible_names = [
+                        f"{pattern}{ext}",
+                        f"images/{pattern}{ext}",
+                        f"Images/{pattern}{ext}",
+                        f"OEBPS/images/{pattern}{ext}",
+                        f"OEBPS/Images/{pattern}{ext}"
+                    ]
+                    
+                    for name in possible_names:
+                        try:
+                            cover_data = epub_zip.read(name)
+                            # Determine MIME type from extension
+                            mime_type = {
+                                '.jpg': 'image/jpeg',
+                                '.jpeg': 'image/jpeg', 
+                                '.png': 'image/png',
+                                '.gif': 'image/gif'
+                            }.get(ext.lower(), 'image/jpeg')
+                            return cover_data, mime_type
+                        except:
+                            continue
+            
+            # Method 4: Find first image in spine
+            manifest = opf_root.find('.//opf:manifest', ns)
+            spine = opf_root.find('.//opf:spine', ns)
+            
+            if manifest is not None and spine is not None:
+                # Build file map
+                file_map = {}
+                for item in manifest.findall('.//opf:item', ns):
+                    file_map[item.get('id')] = {
+                        'href': item.get('href'),
+                        'media_type': item.get('media-type', '')
+                    }
+                
+                # Check first few spine items for images
+                for i, itemref in enumerate(spine.findall('.//opf:itemref', ns)[:3]):  # Check first 3 items
+                    idref = itemref.get('idref')
+                    if idref in file_map:
+                        chapter_path = os.path.join(opf_dir, file_map[idref]['href']).replace('\\', '/')
+                        try:
+                            chapter_content = epub_zip.read(chapter_path).decode('utf-8')
+                            # Look for img tags
+                            import re
+                            img_matches = re.findall(r'<img[^>]+src=["\']([^"\']+)["\'][^>]*>', chapter_content, re.IGNORECASE)
+                            
+                            for img_src in img_matches:
+                                # Resolve relative path
+                                img_path = os.path.join(os.path.dirname(chapter_path), img_src).replace('\\', '/')
+                                try:
+                                    img_data = epub_zip.read(img_path)
+                                    # Determine MIME type
+                                    ext = os.path.splitext(img_src)[1].lower()
+                                    mime_type = {
+                                        '.jpg': 'image/jpeg',
+                                        '.jpeg': 'image/jpeg', 
+                                        '.png': 'image/png',
+                                        '.gif': 'image/gif'
+                                    }.get(ext, 'image/jpeg')
+                                    return img_data, mime_type
+                                except:
+                                    continue
+                        except:
+                            pass
+            
+        except Exception as e:
+            print(f"Error extracting EPUB cover: {e}")
+        
+        return None, None
     
     def _html_to_text(self, html_content):
         """Convert HTML to plain text"""

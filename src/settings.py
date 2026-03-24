@@ -92,7 +92,8 @@ class Settings:
                     # Special handling for complex data
                     return json.loads(self.gsettings.get_string(gsettings_key) or "{}")
                 return self.gsettings.get_value(gsettings_key).unpack()
-            except:
+            except Exception as e:
+                print(f"GSettings get error for {key}: {e}")
                 return default
         else:
             return self.settings.get(key, default)
@@ -119,10 +120,19 @@ class Settings:
                         variant = GLib.Variant.new_string(str(value))
                     self.gsettings.set_value(gsettings_key, variant)
             except Exception as e:
-                print(f"Error setting GSettings value {key}: {e}")
+                print(f"GSettings error for {key}: {e}, falling back to JSON")
+                # If GSettings fails, fall back to JSON
+                self._fallback_to_json(key, value)
         else:
             self.settings[key] = value
             self.save_settings()
+    
+    def _fallback_to_json(self, key, value):
+        """Fallback to JSON storage when GSettings fails"""
+        if not hasattr(self, 'settings'):
+            self.load_settings()
+        self.settings[key] = value
+        self.save_settings()
 
     def get_reading_position(self, book_path):
         """Get reading position for a book"""

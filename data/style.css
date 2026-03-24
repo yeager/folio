@@ -1,0 +1,82 @@
+/* Folio reading themes and styles */
+
+/* Sepia theme */
+.sepia-theme {
+    background-color: #F5E6C8;
+    color: #3E2723;
+}
+
+.sepia-theme text {
+    background-color: #F5E6C8;
+    color: #3E2723;
+}
+
+/* Night theme */
+.night-theme {
+    background-color: #1A1A2E;
+    color: #C8B89A;
+}
+
+.night-theme text {
+    background-color: #1A1A2E;
+    color: #C8B89A;
+}
+
+/* Highlight colors */
+.highlight-yellow {
+    background-color: #FFEB3B;
+}
+
+.highlight-green {
+    background-color: #4CAF50;
+}
+
+.highlight-blue {
+    background-color: #2196F3;
+}
+
+.highlight-red {
+    background-color: #F44336;
+}
+
+.highlight-orange {
+    background-color: #FF9800;
+}
+
+.highlight-purple {
+    background-color: #9C27B0;
+}
+
+/* Circular color indicators */
+.circular {
+    border-radius: 50%;
+    min-width: 12px;
+    min-height: 12px;
+}
+
+/* Search highlights */
+.search-highlight {
+    background-color: #FF5722;
+    color: #FFFFFF;
+}
+
+.search-current {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+}
+
+/* Reading area margins */
+.reading-narrow {
+    margin-left: 64px;
+    margin-right: 64px;
+}
+
+.reading-medium {
+    margin-left: 96px;
+    margin-right: 96px;
+}
+
+.reading-wide {
+    margin-left: 128px;
+    margin-right: 128px;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background circle (GNOME style) -->
+  <circle cx="64" cy="64" r="60" fill="#3584e4" stroke="none"/>
+  
+  <!-- Open book base -->
+  <path d="M 25 45 L 25 90 Q 25 95 30 95 L 60 95 Q 64 92 64 88 L 64 48 Q 64 45 60 45 Z" 
+        fill="#ffffff" opacity="0.95"/>
+  <path d="M 103 45 L 103 90 Q 103 95 98 95 L 68 95 Q 64 92 64 88 L 64 48 Q 64 45 68 45 Z" 
+        fill="#ffffff" opacity="0.95"/>
+  
+  <!-- Book spine/binding -->
+  <rect x="62" y="45" width="4" height="47" fill="#c0c0c0"/>
+  
+  <!-- Book pages (subtle lines) -->
+  <line x1="30" y1="55" x2="58" y2="55" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="70" y1="55" x2="98" y2="55" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="30" y1="65" x2="58" y2="65" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="70" y1="65" x2="98" y2="65" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="30" y1="75" x2="58" y2="75" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="70" y1="75" x2="98" y2="75" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Sound wave symbol on right page -->
+  <g transform="translate(82, 62)">
+    <!-- Sound waves -->
+    <path d="M 0 0 Q 4 -6 8 0 Q 4 6 0 0" fill="none" stroke="#3584e4" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 10 0 Q 16 -10 22 0 Q 16 10 10 0" fill="none" stroke="#3584e4" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M 24 0 Q 32 -14 40 0 Q 32 14 24 0" fill="none" stroke="#3584e4" stroke-width="1" stroke-linecap="round"/>
+    
+    <!-- Speaker symbol -->
+    <rect x="-8" y="-3" width="6" height="6" fill="#3584e4" rx="1"/>
+    <path d="M -2 -4 L 2 -7 L 2 7 L -2 4 Z" fill="#3584e4"/>
+  </g>
+  
+  <!-- Small bookmark ribbon -->
+  <path d="M 55 30 L 55 52 L 58 48 L 61 52 L 61 30 Z" fill="#ff6b35"/>
+  
+  <!-- Subtle shadow/depth -->
+  <path d="M 25 90 L 25 92 Q 25 97 30 97 L 60 97 Q 64 94 64 90 L 64 88 Q 64 92 60 95 L 30 95 Q 25 95 25 90 Z" 
+        fill="#000000" opacity="0.1"/>
+  <path d="M 103 90 L 103 92 Q 103 97 98 97 L 68 97 Q 64 94 64 90 L 64 88 Q 64 92 68 95 L 98 95 Q 103 95 103 90 Z" 
+        fill="#000000" opacity="0.1"/>
+</svg>

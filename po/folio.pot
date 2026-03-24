@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Daniel Nylander
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the folio package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: folio 0.1.0\n"
-"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
-"POT-Creation-Date: 2026-03-24 09:36+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-24 09:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,24 +16,25 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/application.py:129
+#: src/application.py:178
 msgid "translator-credits"
 msgstr ""
 
-#: src/application.py:134
+#: src/application.py:183
 msgid "Help Translate"
 msgstr ""
 
-#: src/book_parser.py:234 src/book_parser.py:273 src/book_parser.py:281
+#: src/book_parser.py:350 src/book_parser.py:389 src/book_parser.py:397
 msgid "Chapter"
 msgstr ""
 
-#: src/book_parser.py:314
+#: src/book_parser.py:430
 msgid "Page"
 msgstr ""
 
-#: src/book_parser.py:320
+#: src/book_parser.py:436
 msgid "CBR format requires additional software to read"
 msgstr ""
 
@@ -61,154 +62,325 @@ msgstr ""
 msgid "Unknown author"
 msgstr ""
 
-#: src/library.py:332
-#, python-brace-format
-msgid "{} of {} books"
+#: src/library.py:334 src/library.py:339
+msgid "1 book"
 msgstr ""
 
-#: src/library.py:334
+#: src/library.py:336 src/library.py:341
 #, python-brace-format
 msgid "{} books"
 msgstr ""
 
-#: src/reader.py:57
-msgid "Table of Contents"
+#: src/library.py:343
+#, python-brace-format
+msgid "{} of {}"
 msgstr ""
 
-#: src/reader.py:93 src/reader.py:94 src/window.py:621
+#: src/library.py:346
+#, python-brace-format
+msgid "{} book"
+msgid_plural "{} books"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reader.py:88
+msgid "Contents"
+msgstr ""
+
+#: src/reader.py:96
+msgid "Add Bookmark"
+msgstr ""
+
+#: src/reader.py:109
+msgid "Bookmarks"
+msgstr ""
+
+#: src/reader.py:117
+msgid "Export"
+msgstr ""
+
+#: src/reader.py:130
+msgid "Highlights"
+msgstr ""
+
+#: src/reader.py:150 src/reader.py:151 src/window.py:621
 msgid "Back to library"
 msgstr ""
 
-#: src/reader.py:111
+#: src/reader.py:168
 msgid "Text-to-Speech Controls"
 msgstr ""
 
-#: src/reader.py:115 src/reader.py:116
+#: src/reader.py:172 src/reader.py:173
 msgid "Play/Pause"
 msgstr ""
 
-#: src/reader.py:123 src/reader.py:124
+#: src/reader.py:180 src/reader.py:181
 msgid "Stop"
 msgstr ""
 
-#: src/reader.py:132 src/reader.py:133
+#: src/reader.py:189 src/reader.py:190
 msgid "Speech speed"
 msgstr ""
 
-#: src/reader.py:143
+#: src/reader.py:200
+msgid "Search in book (Ctrl+F)"
+msgstr ""
+
+#: src/reader.py:207
+msgid "Add bookmark (Ctrl+B)"
+msgstr ""
+
+#: src/reader.py:214
 msgid "Reading settings"
 msgstr ""
 
-#: src/reader.py:147
+#: src/reader.py:218
 msgid "Font size..."
 msgstr ""
 
-#: src/reader.py:148
+#: src/reader.py:219
+msgid "Reading theme..."
+msgstr ""
+
+#: src/reader.py:220
+msgid "Line spacing..."
+msgstr ""
+
+#: src/reader.py:221
 msgid "TTS settings..."
 msgstr ""
 
-#: src/reader.py:185 src/reader.py:186
+#: src/reader.py:222
+msgid "Dictionary..."
+msgstr ""
+
+#: src/reader.py:223
+msgid "Statistics..."
+msgstr ""
+
+#: src/reader.py:236
+msgid "Search in book..."
+msgstr ""
+
+#: src/reader.py:244
+msgid "Previous match (Shift+Enter)"
+msgstr ""
+
+#: src/reader.py:250
+msgid "Next match (Enter)"
+msgstr ""
+
+#: src/reader.py:302 src/reader.py:303
 msgid "Previous chapter"
 msgstr ""
 
-#: src/reader.py:200 src/reader.py:201
+#: src/reader.py:317 src/reader.py:318
 msgid "Next chapter"
 msgstr ""
 
-#: src/reader.py:499
+#: src/reader.py:684
 #, python-brace-format
 msgid "Speech speed: {}x"
 msgstr ""
 
-#: src/reader.py:537
+#: src/reader.py:722
 msgid "Font Size"
 msgstr ""
 
-#: src/reader.py:540
+#: src/reader.py:725
 msgid "Cancel"
 msgstr ""
 
-#: src/reader.py:541
+#: src/reader.py:726
 msgid "OK"
 msgstr ""
 
-#: src/reader.py:545
+#: src/reader.py:730
 msgid "Font size:"
 msgstr ""
 
-#: src/reader.py:576
+#: src/reader.py:761
 msgid "TTS Settings"
 msgstr ""
 
-#: src/reader.py:580 src/reader.py:589
+#: src/reader.py:765 src/reader.py:774
 msgid "Voice"
 msgstr ""
 
-#: src/reader.py:584
+#: src/reader.py:769
 msgid "Voice Selection"
 msgstr ""
 
-#: src/reader.py:604
+#: src/reader.py:789
 msgid "Speed"
 msgstr ""
 
-#: src/reader.py:609
+#: src/reader.py:794
 msgid "Speech rate"
 msgstr ""
 
-#: src/reader.py:614
+#: src/reader.py:799
 msgid "Auto page turn"
 msgstr ""
 
-#: src/reader.py:615
+#: src/reader.py:800
 msgid "Automatically turn to next page after TTS finishes"
 msgstr ""
 
-#: src/reader.py:645
+#: src/reader.py:830
 msgid "Search functionality not yet implemented"
+msgstr ""
+
+#: src/reader.py:980
+msgid "No matches"
+msgstr ""
+
+#: src/reader.py:1046
+msgid "Bookmark added"
+msgstr ""
+
+#: src/reader.py:1051
+msgid "Bookmark already exists here"
+msgstr ""
+
+#: src/reader.py:1195
+msgid "No annotations to export"
+msgstr ""
+
+#: src/reader.py:1201
+msgid "Export Annotations"
+msgstr ""
+
+#: src/reader.py:1212
+msgid "Annotations exported successfully"
+msgstr ""
+
+#: src/reader.py:1237
+msgid "Yellow highlight"
+msgstr ""
+
+#: src/reader.py:1238
+msgid "Green highlight"
+msgstr ""
+
+#: src/reader.py:1239
+msgid "Blue highlight"
+msgstr ""
+
+#: src/reader.py:1240
+msgid "Red highlight"
+msgstr ""
+
+#: src/reader.py:1241
+msgid "Orange highlight"
+msgstr ""
+
+#: src/reader.py:1242
+msgid "Purple highlight"
+msgstr ""
+
+#: src/reader.py:1377
+msgid "Looking up definition..."
+msgstr ""
+
+#: src/reader.py:1433
+msgid "Definition not found"
+msgstr ""
+
+#: src/reader.py:1471
+msgid "Reading Theme"
+msgstr ""
+
+#: src/reader.py:1472
+msgid "Choose a reading theme"
+msgstr ""
+
+#: src/reader.py:1475
+msgid "Default"
+msgstr ""
+
+#: src/reader.py:1476
+msgid "Sepia"
+msgstr ""
+
+#: src/reader.py:1477
+msgid "Night"
+msgstr ""
+
+#: src/reader.py:1506 src/reader.py:1515
+msgid "Line Spacing"
+msgstr ""
+
+#: src/reader.py:1516
+msgid "Adjust spacing between lines"
+msgstr ""
+
+#: src/reader.py:1543
+msgid "Dictionary settings - coming soon"
+msgstr ""
+
+#: src/reader.py:1555
+msgid "Reading Statistics"
+msgstr ""
+
+#: src/reader.py:1566
+msgid "Total reading time"
+msgstr ""
+
+#: src/reader.py:1567
+msgid "Pages read"
+msgstr ""
+
+#: src/reader.py:1568
+msgid "Reading sessions"
+msgstr ""
+
+#: src/reader.py:1572
+msgid "Close"
 msgstr ""
 
 #: src/tts.py:103
 msgid "Piper TTS not available"
 msgstr ""
 
-#: src/tts.py:403
+#: src/tts.py:545
 msgid "Swedish (Alma) - Medium"
 msgstr ""
 
-#: src/tts.py:404
+#: src/tts.py:546
 msgid "Swedish (Alma) - High Quality"
 msgstr ""
 
-#: src/tts.py:405
+#: src/tts.py:547
 msgid "Swedish (Alma) - Low Quality"
 msgstr ""
 
-#: src/tts.py:406
+#: src/tts.py:548
 msgid "English US (Lessac) - Medium"
 msgstr ""
 
-#: src/tts.py:407
+#: src/tts.py:549
 msgid "English US (Lessac) - High Quality"
 msgstr ""
 
-#: src/tts.py:408
+#: src/tts.py:550
 msgid "English UK (Female) - Medium"
 msgstr ""
 
-#: src/tts.py:409
+#: src/tts.py:551
 msgid "English US (LibriTTS) - High Quality"
 msgstr ""
 
-#: src/tts.py:410
+#: src/tts.py:552
 msgid "German (Thorsten) - Medium"
 msgstr ""
 
-#: src/tts.py:411
+#: src/tts.py:553
 msgid "Spanish (Sharvard) - Medium"
 msgstr ""
 
-#: src/tts.py:412
+#: src/tts.py:554
 msgid "French (Siwis) - Medium"
 msgstr ""
 

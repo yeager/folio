@@ -119,24 +119,158 @@ class TTSEngine(GObject.Object):
         return True
     
     def _speech_worker(self, text):
-        """Background worker for TTS"""
+        """Background worker for TTS with proper timing from Piper JSON output"""
         try:
-            # Create temporary file for audio
+            # Create temporary files for audio and timing
             with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as temp_audio:
                 temp_audio_path = temp_audio.name
                 self.temp_files.append(temp_audio_path)
             
-            # Build piper command
+            with tempfile.NamedTemporaryFile(suffix='.json', delete=False) as temp_json:
+                temp_json_path = temp_json.name
+                self.temp_files.append(temp_json_path)
+            
+            # Build piper command with JSON timing output
             piper_cmd = [
                 'piper',
                 '--model', self.voice,
-                '--output_file', temp_audio_path
+                '--output_file', temp_audio_path,
+                '--json'  # Enable JSON timing output
             ]
             
             # Add speed control if supported
             if self.speed != 1.0:
                 try:
                     # Some Piper versions support --rate
+                    piper_cmd.extend(['--rate', str(self.speed)])
+                except:
+                    pass
+            
+            # Run Piper to generate audio with timing data
+            self.current_process = subprocess.Popen(
+                piper_cmd,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+            
+            json_output, stderr = self.current_process.communicate(input=text)
+            
+            if self.current_process.returncode != 0:
+                # Fallback to old method if JSON not supported
+                self._speech_worker_fallback(text)
+                return
+            
+            # Parse JSON timing data
+            word_timings = self._parse_piper_json(json_output, text)
+            
+            # Play the generated audio with accurate timing
+            if self.is_playing:
+                self._play_audio_with_timing(temp_audio_path, word_timings)
+                
+        except Exception as e:
+            # Fallback to estimated timing
+            print(f"TTS timing error, falling back to estimation: {e}")
+            self._speech_worker_fallback(text)
+        finally:
+            self.is_playing = False
+            self.current_process = None
+            self._cleanup_temp_files()
+    
+    def _parse_piper_json(self, json_output, text):
+        """Parse Piper JSON output to extract word timing"""
+        try:
+            import json
+            
+            timing_data = json.loads(json_output)
+            word_timings = []
+            
+            # Piper JSON format may vary, handle different structures
+            if 'phonemes' in timing_data:
+                # Extract word boundaries from phonemes
+                current_word_start = None
+                current_word_text = ""
+                
+                for phoneme in timing_data['phonemes']:
+                    if 'word_start' in phoneme and phoneme['word_start']:
+                        if current_word_start is not None:
+                            # End previous word
+                            word_timings.append({
+                                'text': current_word_text.strip(),
+                                'start': current_word_start,
+                                'end': phoneme.get('start', 0)
+                            })
+                        current_word_start = phoneme.get('start', 0)
+                        current_word_text = ""
+                    
+                    if 'text' in phoneme:
+                        current_word_text += phoneme['text']
+                
+                # Add final word
+                if current_word_start is not None:
+                    word_timings.append({
+                        'text': current_word_text.strip(),
+                        'start': current_word_start,
+                        'end': timing_data.get('duration', current_word_start + 0.5)
+                    })
+            
+            elif 'words' in timing_data:
+                # Direct word timing data
+                for word_data in timing_data['words']:
+                    word_timings.append({
+                        'text': word_data.get('text', ''),
+                        'start': word_data.get('start', 0),
+                        'end': word_data.get('end', 0)
+                    })
+            
+            return word_timings
+            
+        except Exception as e:
+            print(f"Error parsing Piper JSON: {e}")
+            # Return fallback timing
+            return self._create_estimated_timing(text)
+    
+    def _create_estimated_timing(self, text):
+        """Create estimated word timing as fallback"""
+        words = self.split_into_words(text)
+        estimated_wpm = 200 * self.speed
+        word_duration = 60.0 / estimated_wpm
+        
+        word_timings = []
+        current_time = 0
+        
+        for word in words:
+            # Scale duration by word length
+            duration = word_duration * (len(word) / 5.0)
+            duration = max(0.1, min(2.0, duration))
+            
+            word_timings.append({
+                'text': word,
+                'start': current_time,
+                'end': current_time + duration
+            })
+            current_time += duration
+        
+        return word_timings
+    
+    def _speech_worker_fallback(self, text):
+        """Fallback speech worker without JSON timing"""
+        try:
+            # Create temporary file for audio
+            with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as temp_audio:
+                temp_audio_path = temp_audio.name
+                self.temp_files.append(temp_audio_path)
+            
+            # Build piper command without JSON
+            piper_cmd = [
+                'piper',
+                '--model', self.voice,
+                '--output_file', temp_audio_path
+            ]
+            
+            if self.speed != 1.0:
+                try:
                     piper_cmd.extend(['--rate', str(self.speed)])
                 except:
                     pass
@@ -157,19 +291,18 @@ class TTSEngine(GObject.Object):
                             f"Piper error: {stderr}")
                 return
             
+            # Use estimated timing
+            word_timings = self._create_estimated_timing(text)
+            
             # Play the generated audio
             if self.is_playing:
-                self._play_audio(temp_audio_path)
+                self._play_audio_with_timing(temp_audio_path, word_timings)
                 
         except Exception as e:
             GLib.idle_add(self.emit, 'speech-error', str(e))
-        finally:
-            self.is_playing = False
-            self.current_process = None
-            self._cleanup_temp_files()
     
-    def _play_audio(self, audio_path):
-        """Play audio file and handle word-level highlighting"""
+    def _play_audio_with_timing(self, audio_path, word_timings):
+        """Play audio file with accurate word timing from Piper JSON"""
         try:
             # Try different audio players
             audio_players = ['aplay', 'paplay', 'play', 'afplay']
@@ -198,29 +331,32 @@ class TTSEngine(GObject.Object):
                 stderr=subprocess.PIPE
             )
             
-            # Estimate timing for word highlighting
-            if self.current_words:
-                # Rough estimation: average characters per word
-                total_chars = len(self.current_text)
-                words_count = len(self.current_words)
+            # Use real timing data for word highlighting
+            start_time = time.time()
+            
+            for i, word_timing in enumerate(word_timings):
+                if not self.is_playing:
+                    break
                 
-                if words_count > 0:
-                    # Estimate ~200 WPM (words per minute) base speed, adjusted by speed setting
-                    estimated_wpm = 200 * self.speed
-                    word_duration = 60.0 / estimated_wpm  # seconds per word
-                    
-                    # Adjust based on word length (longer words take more time)
-                    for i, word in enumerate(self.current_words):
-                        if not self.is_playing:
-                            break
-                        
-                        # Scale duration by word length
-                        word_time = word_duration * (len(word) / 5.0)  # 5 chars = average word
-                        word_time = max(0.1, min(2.0, word_time))  # Clamp between 0.1-2 seconds
-                        
-                        GLib.idle_add(self.emit, 'word-started', i)
-                        time.sleep(word_time)
-                        GLib.idle_add(self.emit, 'word-finished', i)
+                # Calculate when this word should start
+                word_start_time = start_time + word_timing['start']
+                current_time = time.time()
+                
+                # Wait until word start time
+                if word_start_time > current_time:
+                    time.sleep(word_start_time - current_time)
+                
+                # Signal word start
+                if self.is_playing:
+                    GLib.idle_add(self.emit, 'word-started', i)
+                
+                # Calculate word duration
+                word_duration = word_timing['end'] - word_timing['start']
+                time.sleep(max(0.05, word_duration))  # Minimum 50ms per word
+                
+                # Signal word end
+                if self.is_playing:
+                    GLib.idle_add(self.emit, 'word-finished', i)
             
             # Wait for audio to finish
             self.audio_process.wait()
@@ -230,6 +366,12 @@ class TTSEngine(GObject.Object):
                 
         except Exception as e:
             GLib.idle_add(self.emit, 'speech-error', str(e))
+    
+    def _play_audio(self, audio_path):
+        """Legacy method - redirect to timing-based version"""
+        # Create estimated timing and use new method
+        word_timings = self._create_estimated_timing(self.current_text)
+        self._play_audio_with_timing(audio_path, word_timings)
     
     def pause(self):
         """Pause speech"""

@@ -2,6 +2,8 @@
 Type=Application
 Name=Folio
 Name[sv]=Folio
+GenericName=E-book Reader
+GenericName[sv]=E-boksläsare  
 Comment=Modern e-book reader with TTS support
 Comment[sv]=Modern e-boksläsare med TTS-stöd
 Exec=folio %F
@@ -10,5 +12,6 @@ Terminal=false
 Categories=Office;Viewer;Literature;
 MimeType=application/epub+zip;application/pdf;application/x-mobipocket-ebook;application/vnd.amazon.ebook;application/x-fictionbook+xml;application/x-cbz;application/x-cbr;text/plain;text/html;
 Keywords=book;ebook;epub;pdf;reader;tts;speech;
+Keywords[sv]=bok;e-bok;epub;pdf;läsare;tts;tal;uppläsning;
 StartupNotify=true
 StartupWMClass=se.danielnylander.folio

@@ -329,9 +329,21 @@ class LibraryView(Gtk.Box):
         filtered = len(self.filtered_books)
         
         if total != filtered:
-            text = _("{} of {} books").format(filtered, total)
+            # Use proper singular/plural forms
+            if filtered == 1:
+                filtered_text = _("1 book")
+            else:
+                filtered_text = _("{} books").format(filtered)
+            
+            if total == 1:
+                total_text = _("1 book")
+            else:
+                total_text = _("{} books").format(total)
+            
+            text = _("{} of {}").format(filtered_text, total_text)
         else:
-            text = _("{} books").format(total)
+            # Use ngettext for proper pluralization
+            text = gettext.ngettext("{} book", "{} books", total).format(total)
         
         self.status_bar.set_text(text)
     
