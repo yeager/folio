@@ -1,270 +1,494 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) YEAR Daniel Nylander
 # This file is distributed under the same license as the folio package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: folio 1.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-01 12:00+0100\n"
+"Project-Id-Version: folio 0.1.0\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-03-24 09:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Folio"
-msgstr ""
-
-msgid "The Book Reader"
-msgstr ""
-
-msgid "Modern e-book reader with TTS support"
-msgstr ""
-
+#: src/application.py:129
 msgid "translator-credits"
 msgstr ""
 
-msgid "Preferences"
+#: src/application.py:134
+msgid "Help Translate"
 msgstr ""
 
-msgid "About"
-msgstr ""
-
-msgid "Quit"
-msgstr ""
-
-msgid "Search books..."
-msgstr ""
-
-msgid "Grid view"
-msgstr ""
-
-msgid "List view"
-msgstr ""
-
-msgid "Add books"
-msgstr ""
-
-msgid "Refresh library"
-msgstr ""
-
-msgid "Unknown author"
-msgstr ""
-
-msgid "EPUB e-book"
-msgstr ""
-
-msgid "PDF document"
-msgstr ""
-
-msgid "Kindle MOBI"
-msgstr ""
-
-msgid "Kindle AZW"
-msgstr ""
-
-msgid "Kindle AZW3"
-msgstr ""
-
-msgid "FictionBook"
-msgstr ""
-
-msgid "Comic book ZIP"
-msgstr ""
-
-msgid "Comic book RAR"
-msgstr ""
-
-msgid "Plain text"
-msgstr ""
-
-msgid "HTML document"
-msgstr ""
-
-msgid "Unknown format"
-msgstr ""
-
+#: src/book_parser.py:234 src/book_parser.py:273 src/book_parser.py:281
 msgid "Chapter"
 msgstr ""
 
+#: src/book_parser.py:314
 msgid "Page"
 msgstr ""
 
-msgid "Table of Contents"
-msgstr ""
-
-msgid "Back to library"
-msgstr ""
-
-msgid "Play"
-msgstr ""
-
-msgid "Pause"
-msgstr ""
-
-msgid "Stop"
-msgstr ""
-
-msgid "Reading settings"
-msgstr ""
-
-msgid "Previous chapter"
-msgstr ""
-
-msgid "Next chapter"
-msgstr ""
-
-msgid "Font Size"
-msgstr ""
-
-msgid "Font size:"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "OK"
-msgstr ""
-
-msgid "TTS Settings"
-msgstr ""
-
-msgid "Voice"
-msgstr ""
-
-msgid "Voice Selection"
-msgstr ""
-
-msgid "Speed"
-msgstr ""
-
-msgid "Speech rate"
-msgstr ""
-
-msgid "Auto page turn"
-msgstr ""
-
-msgid "Automatically turn to next page after TTS finishes"
-msgstr ""
-
-msgid "Swedish (Alma) - Medium"
-msgstr ""
-
-msgid "Swedish (Alma) - High Quality"
-msgstr ""
-
-msgid "Swedish (Alma) - Low Quality"
-msgstr ""
-
-msgid "English US (Lessac) - Medium"
-msgstr ""
-
-msgid "English US (Lessac) - High Quality"
-msgstr ""
-
-msgid "English UK (Female) - Medium"
-msgstr ""
-
-msgid "English US (LibriTTS) - High Quality"
-msgstr ""
-
-msgid "German (Thorsten) - Medium"
-msgstr ""
-
-msgid "Spanish (Sharvard) - Medium"
-msgstr ""
-
-msgid "French (Siwis) - Medium"
-msgstr ""
-
-msgid "Piper TTS not available"
-msgstr ""
-
+#: src/book_parser.py:320
 msgid "CBR format requires additional software to read"
 msgstr ""
 
-msgid "Main menu"
+#: src/library.py:78
+msgid "Search books..."
 msgstr ""
 
-msgid "Open Book"
+#: src/library.py:88
+msgid "Grid view"
 msgstr ""
 
-msgid "All supported formats"
+#: src/library.py:95
+msgid "List view"
 msgstr ""
 
-msgid "EPUB e-books (*.epub)"
+#: src/library.py:104
+msgid "Add books"
 msgstr ""
 
-msgid "PDF documents (*.pdf)"
+#: src/library.py:111
+msgid "Refresh library"
 msgstr ""
 
-msgid "Comic books (*.cbz, *.cbr)"
+#: src/library.py:203
+msgid "Unknown author"
 msgstr ""
 
-msgid "All files"
-msgstr ""
-
-msgid "General"
-msgstr ""
-
-msgid "Library"
-msgstr ""
-
-msgid "Library folder"
-msgstr ""
-
-msgid "Where your books are stored"
-msgstr ""
-
-msgid "Choose Folder"
-msgstr ""
-
-msgid "Appearance"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "System"
-msgstr ""
-
-msgid "Light"
-msgstr ""
-
-msgid "Dark"
-msgstr ""
-
-msgid "Default font size"
-msgstr ""
-
-msgid "Choose Library Folder"
-msgstr ""
-
-msgid "Library folder updated"
-msgstr ""
-
-msgid "File not found: {}"
-msgstr ""
-
-msgid "Unsupported file format"
-msgstr ""
-
-msgid "Opened: {}"
-msgstr ""
-
-msgid "Error opening book: {}"
-msgstr ""
-
+#: src/library.py:332
+#, python-brace-format
 msgid "{} of {} books"
 msgstr ""
 
+#: src/library.py:334
+#, python-brace-format
 msgid "{} books"
 msgstr ""
 
+#: src/reader.py:57
+msgid "Table of Contents"
+msgstr ""
+
+#: src/reader.py:93 src/reader.py:94 src/window.py:621
+msgid "Back to library"
+msgstr ""
+
+#: src/reader.py:111
+msgid "Text-to-Speech Controls"
+msgstr ""
+
+#: src/reader.py:115 src/reader.py:116
+msgid "Play/Pause"
+msgstr ""
+
+#: src/reader.py:123 src/reader.py:124
+msgid "Stop"
+msgstr ""
+
+#: src/reader.py:132 src/reader.py:133
+msgid "Speech speed"
+msgstr ""
+
+#: src/reader.py:143
+msgid "Reading settings"
+msgstr ""
+
+#: src/reader.py:147
+msgid "Font size..."
+msgstr ""
+
+#: src/reader.py:148
+msgid "TTS settings..."
+msgstr ""
+
+#: src/reader.py:185 src/reader.py:186
+msgid "Previous chapter"
+msgstr ""
+
+#: src/reader.py:200 src/reader.py:201
+msgid "Next chapter"
+msgstr ""
+
+#: src/reader.py:499
+#, python-brace-format
 msgid "Speech speed: {}x"
+msgstr ""
+
+#: src/reader.py:537
+msgid "Font Size"
+msgstr ""
+
+#: src/reader.py:540
+msgid "Cancel"
+msgstr ""
+
+#: src/reader.py:541
+msgid "OK"
+msgstr ""
+
+#: src/reader.py:545
+msgid "Font size:"
+msgstr ""
+
+#: src/reader.py:576
+msgid "TTS Settings"
+msgstr ""
+
+#: src/reader.py:580 src/reader.py:589
+msgid "Voice"
+msgstr ""
+
+#: src/reader.py:584
+msgid "Voice Selection"
+msgstr ""
+
+#: src/reader.py:604
+msgid "Speed"
+msgstr ""
+
+#: src/reader.py:609
+msgid "Speech rate"
+msgstr ""
+
+#: src/reader.py:614
+msgid "Auto page turn"
+msgstr ""
+
+#: src/reader.py:615
+msgid "Automatically turn to next page after TTS finishes"
+msgstr ""
+
+#: src/reader.py:645
+msgid "Search functionality not yet implemented"
+msgstr ""
+
+#: src/tts.py:103
+msgid "Piper TTS not available"
+msgstr ""
+
+#: src/tts.py:403
+msgid "Swedish (Alma) - Medium"
+msgstr ""
+
+#: src/tts.py:404
+msgid "Swedish (Alma) - High Quality"
+msgstr ""
+
+#: src/tts.py:405
+msgid "Swedish (Alma) - Low Quality"
+msgstr ""
+
+#: src/tts.py:406
+msgid "English US (Lessac) - Medium"
+msgstr ""
+
+#: src/tts.py:407
+msgid "English US (Lessac) - High Quality"
+msgstr ""
+
+#: src/tts.py:408
+msgid "English UK (Female) - Medium"
+msgstr ""
+
+#: src/tts.py:409
+msgid "English US (LibriTTS) - High Quality"
+msgstr ""
+
+#: src/tts.py:410
+msgid "German (Thorsten) - Medium"
+msgstr ""
+
+#: src/tts.py:411
+msgid "Spanish (Sharvard) - Medium"
+msgstr ""
+
+#: src/tts.py:412
+msgid "French (Siwis) - Medium"
+msgstr ""
+
+#: src/utils.py:42
+msgid "EPUB e-book"
+msgstr ""
+
+#: src/utils.py:43
+msgid "PDF document"
+msgstr ""
+
+#: src/utils.py:44
+msgid "Kindle MOBI"
+msgstr ""
+
+#: src/utils.py:45
+msgid "Kindle AZW"
+msgstr ""
+
+#: src/utils.py:46
+msgid "Kindle AZW3"
+msgstr ""
+
+#: src/utils.py:47
+msgid "FictionBook"
+msgstr ""
+
+#: src/utils.py:48
+msgid "Comic book ZIP"
+msgstr ""
+
+#: src/utils.py:49
+msgid "Comic book RAR"
+msgstr ""
+
+#: src/utils.py:50
+msgid "Plain text"
+msgstr ""
+
+#: src/utils.py:51 src/utils.py:52
+msgid "HTML document"
+msgstr ""
+
+#: src/utils.py:66
+msgid "Unknown format"
+msgstr ""
+
+#: src/window.py:47
+msgid "Folio"
+msgstr ""
+
+#: src/window.py:57 src/window.py:58
+msgid "Main menu"
+msgstr ""
+
+#: src/window.py:63 src/window.py:352 src/window.py:601
+msgid "Preferences"
+msgstr ""
+
+#: src/window.py:64
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/window.py:65
+msgid "About"
+msgstr ""
+
+#: src/window.py:66 src/window.py:594
+msgid "Quit"
+msgstr ""
+
+#: src/window.py:260
+#, python-brace-format
+msgid "File not found: {}"
+msgstr ""
+
+#: src/window.py:264 src/window.py:491
+msgid "Unsupported file format"
+msgstr ""
+
+#: src/window.py:270
+#, python-brace-format
+msgid "Opened: {}"
+msgstr ""
+
+#: src/window.py:276
+#, python-brace-format
+msgid "Error opening book: {}"
+msgstr ""
+
+#: src/window.py:281 src/window.py:771
+msgid "Open Book"
+msgstr ""
+
+#: src/window.py:288
+msgid "All supported formats"
+msgstr ""
+
+#: src/window.py:304
+msgid "EPUB e-books (*.epub)"
+msgstr ""
+
+#: src/window.py:310
+msgid "PDF documents (*.pdf)"
+msgstr ""
+
+#: src/window.py:316
+msgid "Comic books (*.cbz, *.cbr)"
+msgstr ""
+
+#: src/window.py:323
+msgid "All files"
+msgstr ""
+
+#: src/window.py:356 src/window.py:575
+msgid "General"
+msgstr ""
+
+#: src/window.py:360
+msgid "Library"
+msgstr ""
+
+#: src/window.py:364
+msgid "Library folder"
+msgstr ""
+
+#: src/window.py:365
+msgid "Where your books are stored"
+msgstr ""
+
+#: src/window.py:367
+msgid "Choose Folder"
+msgstr ""
+
+#: src/window.py:379
+msgid "Appearance"
+msgstr ""
+
+#: src/window.py:383
+msgid "Theme"
+msgstr ""
+
+#: src/window.py:384
+msgid "Choose between light, dark, or system theme"
+msgstr ""
+
+#: src/window.py:386
+msgid "System"
+msgstr ""
+
+#: src/window.py:386
+msgid "Light"
+msgstr ""
+
+#: src/window.py:386
+msgid "Dark"
+msgstr ""
+
+#: src/window.py:406
+msgid "Default font size"
+msgstr ""
+
+#: src/window.py:416
+msgid "Translation"
+msgstr ""
+
+#: src/window.py:421
+msgid "Help translate Folio"
+msgstr ""
+
+#: src/window.py:422
+msgid "Help translate Folio into your language"
+msgstr ""
+
+#: src/window.py:425
+msgid "Open Transifex"
+msgstr ""
+
+#: src/window.py:457
+msgid "Drop files to import"
+msgstr ""
+
+#: src/window.py:479
+#, python-brace-format
+msgid "Imported: {}"
+msgstr ""
+
+#: src/window.py:481
+msgid "Book already in library"
+msgstr ""
+
+#: src/window.py:485
+#, python-brace-format
+msgid "Error importing file: {}"
+msgstr ""
+
+#: src/window.py:528
+msgid "Choose Library Folder"
+msgstr ""
+
+#: src/window.py:543
+msgid "Library folder updated"
+msgstr ""
+
+#: src/window.py:581
+msgid "File Operations"
+msgstr ""
+
+#: src/window.py:587
+msgid "Open book file"
+msgstr ""
+
+#: src/window.py:608
+msgid "Navigation"
+msgstr ""
+
+#: src/window.py:614
+msgid "Search in book"
+msgstr ""
+
+#: src/window.py:628
+msgid "Previous page"
+msgstr ""
+
+#: src/window.py:634
+msgid "Next page"
+msgstr ""
+
+#: src/window.py:641
+msgid "First page"
+msgstr ""
+
+#: src/window.py:647
+msgid "Last page"
+msgstr ""
+
+#: src/window.py:654
+msgid "View"
+msgstr ""
+
+#: src/window.py:660
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: src/window.py:667
+msgid "Increase font size"
+msgstr ""
+
+#: src/window.py:673
+msgid "Decrease font size"
+msgstr ""
+
+#: src/window.py:680
+msgid "Text-to-Speech"
+msgstr ""
+
+#: src/window.py:686
+msgid "Play/Pause TTS"
+msgstr ""
+
+#: src/window.py:693
+msgid "Help"
+msgstr ""
+
+#: src/window.py:699
+msgid "Show keyboard shortcuts"
+msgstr ""
+
+#: src/window.py:763
+msgid "Welcome to Folio"
+msgstr ""
+
+#: src/window.py:764
+msgid "Open an e-book to start reading, or add books to your library."
+msgstr ""
+
+#: src/window.py:779
+msgid "Add Books Folder"
+msgstr ""
+
+#: src/window.py:797
+msgid "Don't show this again"
 msgstr ""

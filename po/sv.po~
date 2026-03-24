@@ -1,0 +1,274 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the folio package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Daniel Nylander <po@danielnylander.se>, 2026
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: folio 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 12:00+0100\n"
+"PO-Revision-Date: 2026-03-24 08:25+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
+"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/306578/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Folio"
+msgstr "Folio"
+
+msgid "The Book Reader"
+msgstr "Folio"
+
+msgid "Modern e-book reader with TTS support"
+msgstr "Modern e-boksläsare med TTS-stöd"
+
+msgid "translator-credits"
+msgstr "Daniel Nylander <daniel@danielnylander.se>"
+
+msgid "Preferences"
+msgstr "Inställningar"
+
+msgid "About"
+msgstr "Om"
+
+msgid "Quit"
+msgstr "Avsluta"
+
+msgid "Search books..."
+msgstr "Sök böcker..."
+
+msgid "Grid view"
+msgstr "Rutnätsvy"
+
+msgid "List view"
+msgstr "Listvy"
+
+msgid "Add books"
+msgstr "Lägg till böcker"
+
+msgid "Refresh library"
+msgstr "Uppdatera bibliotek"
+
+msgid "Unknown author"
+msgstr "Okänd författare"
+
+msgid "EPUB e-book"
+msgstr "EPUB e-bok"
+
+msgid "PDF document"
+msgstr "PDF-dokument"
+
+msgid "Kindle MOBI"
+msgstr "Kindle MOBI"
+
+msgid "Kindle AZW"
+msgstr "Kindle AZW"
+
+msgid "Kindle AZW3"
+msgstr "Kindle AZW3"
+
+msgid "FictionBook"
+msgstr "FictionBook"
+
+msgid "Comic book ZIP"
+msgstr "Serietidning ZIP"
+
+msgid "Comic book RAR"
+msgstr "Serietidning RAR"
+
+msgid "Plain text"
+msgstr "Vanlig text"
+
+msgid "HTML document"
+msgstr "HTML-dokument"
+
+msgid "Unknown format"
+msgstr "Okänt format"
+
+msgid "Chapter"
+msgstr "Kapitel"
+
+msgid "Page"
+msgstr "Sida"
+
+msgid "Table of Contents"
+msgstr "Innehållsförteckning"
+
+msgid "Back to library"
+msgstr "Tillbaka till bibliotek"
+
+msgid "Play"
+msgstr "Spela"
+
+msgid "Pause"
+msgstr "Pausa"
+
+msgid "Stop"
+msgstr "Stoppa"
+
+msgid "Reading settings"
+msgstr "Läsinställningar"
+
+msgid "Previous chapter"
+msgstr "Föregående kapitel"
+
+msgid "Next chapter"
+msgstr "Nästa kapitel"
+
+msgid "Font Size"
+msgstr "Teckensnittsstorlek"
+
+msgid "Font size:"
+msgstr "Teckensnittsstorlek:"
+
+msgid "Cancel"
+msgstr "Avbryt"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "TTS Settings"
+msgstr "Inställningar för talsyntes"
+
+msgid "Voice"
+msgstr "Röst"
+
+msgid "Voice Selection"
+msgstr "Röstval"
+
+msgid "Speed"
+msgstr "Hastighet"
+
+msgid "Speech rate"
+msgstr "Talhastighet"
+
+msgid "Auto page turn"
+msgstr "Automatisk sidvändning"
+
+msgid "Automatically turn to next page after TTS finishes"
+msgstr "Vänd automatiskt till nästa sida efter att talsyntesen är klar"
+
+msgid "Swedish (Alma) - Medium"
+msgstr "Svenska (Alma) - Medium"
+
+msgid "Swedish (Alma) - High Quality"
+msgstr "Svenska (Alma) - Hög kvalitet"
+
+msgid "Swedish (Alma) - Low Quality"
+msgstr "Svenska (Alma) - Låg kvalitet"
+
+msgid "English US (Lessac) - Medium"
+msgstr "Engelska US (Lessac) - Medium"
+
+msgid "English US (Lessac) - High Quality"
+msgstr "Engelska US (Lessac) - Hög kvalitet"
+
+msgid "English UK (Female) - Medium"
+msgstr "Engelska UK (Kvinna) - Medium"
+
+msgid "English US (LibriTTS) - High Quality"
+msgstr "Engelska US (LibriTTS) - Hög kvalitet"
+
+msgid "German (Thorsten) - Medium"
+msgstr "Tyska (Thorsten) - Medium"
+
+msgid "Spanish (Sharvard) - Medium"
+msgstr "Spanska (Sharvard) - Medium"
+
+msgid "French (Siwis) - Medium"
+msgstr "Franska (Siwis) - Medium"
+
+msgid "Piper TTS not available"
+msgstr "Piper TTS inte tillgänglig"
+
+msgid "CBR format requires additional software to read"
+msgstr "CBR-format kräver ytterligare programvara för att läsa"
+
+msgid "Main menu"
+msgstr "Huvudmeny"
+
+msgid "Open Book"
+msgstr "Öppna bok"
+
+msgid "All supported formats"
+msgstr "Alla stödda format"
+
+msgid "EPUB e-books (*.epub)"
+msgstr "EPUB e-böcker (*.epub)"
+
+msgid "PDF documents (*.pdf)"
+msgstr "PDF-dokument (*.pdf)"
+
+msgid "Comic books (*.cbz, *.cbr)"
+msgstr "Serietidningar (*.cbz, *.cbr)"
+
+msgid "All files"
+msgstr "Alla filer"
+
+msgid "General"
+msgstr "Allmänt"
+
+msgid "Library"
+msgstr "Bibliotek"
+
+msgid "Library folder"
+msgstr "Biblioteksmapp"
+
+msgid "Where your books are stored"
+msgstr "Var dina böcker lagras"
+
+msgid "Choose Folder"
+msgstr "Välj mapp"
+
+msgid "Appearance"
+msgstr "Utseende"
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "System"
+msgstr "System"
+
+msgid "Light"
+msgstr "Ljust"
+
+msgid "Dark"
+msgstr "Mörkt"
+
+msgid "Default font size"
+msgstr "Standard teckensnittsstorlek"
+
+msgid "Choose Library Folder"
+msgstr "Välj biblioteksmapp"
+
+msgid "Library folder updated"
+msgstr "Biblioteksmapp uppdaterad"
+
+msgid "File not found: {}"
+msgstr "Fil hittades inte: {}"
+
+msgid "Unsupported file format"
+msgstr "Format som inte stöds"
+
+msgid "Opened: {}"
+msgstr "Öppnade: {}"
+
+msgid "Error opening book: {}"
+msgstr "Fel vid öppning av bok: {}"
+
+msgid "{} of {} books"
+msgstr "{} av {} böcker"
+
+msgid "{} books"
+msgstr "{} böcker"
+
+msgid "Speech speed: {}x"
+msgstr "Talhastighet: {}x"
