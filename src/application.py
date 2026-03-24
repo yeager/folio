@@ -28,11 +28,12 @@ class BookReaderApplication(Adw.Application):
     def __init__(self):
         super().__init__(
             application_id="se.danielnylander.folio",
-            flags=Gio.ApplicationFlags.HANDLES_OPEN
+            flags=Gio.ApplicationFlags.HANDLES_OPEN | Gio.ApplicationFlags.HANDLES_COMMAND_LINE
         )
         
         self.settings = Settings()
         self.window = None
+        self.recent_manager = Gtk.RecentManager.get_default()
         
         # Set up actions
         self.create_actions()
@@ -43,6 +44,7 @@ class BookReaderApplication(Adw.Application):
         prefs_action = Gio.SimpleAction.new("preferences", None)
         prefs_action.connect("activate", self.on_preferences_activate)
         self.add_action(prefs_action)
+        self.set_accels_for_action("app.preferences", ["<Ctrl>comma"])
         
         # About action
         about_action = Gio.SimpleAction.new("about", None)
@@ -60,6 +62,12 @@ class BookReaderApplication(Adw.Application):
         open_action.connect("activate", self.on_open_activate)
         self.add_action(open_action)
         self.set_accels_for_action("app.open", ["<Ctrl>o"])
+        
+        # Show keyboard shortcuts action
+        shortcuts_action = Gio.SimpleAction.new("shortcuts", None)
+        shortcuts_action.connect("activate", self.on_shortcuts_activate)
+        self.add_action(shortcuts_action)
+        self.set_accels_for_action("app.shortcuts", ["<Ctrl>question"])
 
     def do_activate(self):
         """Called when the application is activated"""
@@ -75,6 +83,32 @@ class BookReaderApplication(Adw.Application):
             file_path = files[0].get_path()
             if file_path:
                 self.window.open_book(file_path)
+                self.add_to_recent(file_path)
+    
+    def do_command_line(self, command_line):
+        """Handle command line arguments"""
+        args = command_line.get_arguments()
+        
+        # Skip the program name
+        if len(args) > 1:
+            file_path = args[1]
+            if os.path.exists(file_path):
+                self.do_activate()
+                self.window.open_book(file_path)
+                self.add_to_recent(file_path)
+                return 0
+        
+        # No file argument, just activate normally
+        self.do_activate()
+        return 0
+    
+    def add_to_recent(self, file_path):
+        """Add file to recent files"""
+        try:
+            file_uri = Gio.File.new_for_path(file_path).get_uri()
+            self.recent_manager.add_item(file_uri)
+        except Exception as e:
+            print(f"Failed to add to recent files: {e}")
 
     def on_preferences_activate(self, action, param):
         """Show preferences dialog"""
@@ -83,20 +117,23 @@ class BookReaderApplication(Adw.Application):
 
     def on_about_activate(self, action, param):
         """Show about dialog"""
-        about = Adw.AboutWindow(
-            transient_for=self.window,
-            application_name=_("Folio"),
+        about = Adw.AboutDialog(
+            application_name="Folio",
             application_icon="se.danielnylander.folio",
+            version="0.1.0",
             developer_name="Daniel Nylander",
-            version="1.0.0",
             website="https://github.com/yeager/folio",
             issue_url="https://github.com/yeager/folio/issues",
-            copyright="© 2024 Daniel Nylander",
             license_type=Gtk.License.GPL_3_0,
-            developers=["Daniel Nylander https://danielnylander.se"],
-            translator_credits=_("translator-credits")
+            developers=["Daniel Nylander <daniel@danielnylander.se>"],
+            translator_credits=_("translator-credits"),
+            copyright="© 2026 Daniel Nylander",
         )
-        about.present()
+        
+        # Add help translate link
+        about.add_link(_("Help Translate"), "https://www.transifex.com/danielnylander/folio/")
+        
+        about.present(self.window)
 
     def on_quit_activate(self, action, param):
         """Quit the application"""
@@ -106,3 +143,8 @@ class BookReaderApplication(Adw.Application):
         """Open file dialog"""
         if self.window:
             self.window.show_open_dialog()
+
+    def on_shortcuts_activate(self, action, param):
+        """Show keyboard shortcuts window"""
+        if self.window:
+            self.window.show_shortcuts_window()

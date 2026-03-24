@@ -91,6 +91,8 @@ class ReaderView(Gtk.Box):
         back_button = Gtk.Button()
         back_button.set_icon_name("go-previous-symbolic")
         back_button.set_tooltip_text(_("Back to library"))
+        back_button.update_property([Gtk.AccessibleProperty.LABEL], [_("Back to library")])
+        back_button.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         back_button.connect('clicked', lambda b: self.emit('back-requested'))
         toolbar.append(back_button)
         
@@ -105,16 +107,22 @@ class ReaderView(Gtk.Box):
         # TTS controls
         tts_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=3)
         tts_box.add_css_class("linked")
+        tts_box.set_accessible_role(Gtk.AccessibleRole.GROUP)
+        tts_box.update_property([Gtk.AccessibleProperty.LABEL], [_("Text-to-Speech Controls")])
         
         self.play_button = Gtk.Button()
         self.play_button.set_icon_name("media-playback-start-symbolic")
         self.play_button.set_tooltip_text(_("Play/Pause"))
+        self.play_button.update_property([Gtk.AccessibleProperty.LABEL], [_("Play/Pause")])
+        self.play_button.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.play_button.connect('clicked', self.on_tts_play_pause)
         tts_box.append(self.play_button)
         
         self.stop_button = Gtk.Button()
         self.stop_button.set_icon_name("media-playback-stop-symbolic")
         self.stop_button.set_tooltip_text(_("Stop"))
+        self.stop_button.update_property([Gtk.AccessibleProperty.LABEL], [_("Stop")])
+        self.stop_button.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.stop_button.connect('clicked', self.on_tts_stop)
         tts_box.append(self.stop_button)
         
@@ -122,6 +130,8 @@ class ReaderView(Gtk.Box):
         self.speed_button = Gtk.Button()
         self.speed_button.set_icon_name("multimedia-player-symbolic")
         self.speed_button.set_tooltip_text(_("Speech speed"))
+        self.speed_button.update_property([Gtk.AccessibleProperty.LABEL], [_("Speech speed")])
+        self.speed_button.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.speed_button.connect('clicked', self.on_speed_clicked)
         tts_box.append(self.speed_button)
         
@@ -173,6 +183,8 @@ class ReaderView(Gtk.Box):
         self.prev_button = Gtk.Button()
         self.prev_button.set_icon_name("go-previous-symbolic")
         self.prev_button.set_tooltip_text(_("Previous chapter"))
+        self.prev_button.update_property([Gtk.AccessibleProperty.LABEL], [_("Previous chapter")])
+        self.prev_button.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.prev_button.connect('clicked', self.on_prev_chapter)
         nav_bar.append(self.prev_button)
         
@@ -186,6 +198,8 @@ class ReaderView(Gtk.Box):
         self.next_button = Gtk.Button()
         self.next_button.set_icon_name("go-next-symbolic")
         self.next_button.set_tooltip_text(_("Next chapter"))
+        self.next_button.update_property([Gtk.AccessibleProperty.LABEL], [_("Next chapter")])
+        self.next_button.set_accessible_role(Gtk.AccessibleRole.BUTTON)
         self.next_button.connect('clicked', self.on_next_chapter)
         nav_bar.append(self.next_button)
         
@@ -315,6 +329,9 @@ class ReaderView(Gtk.Box):
         # Add content
         iter_end = self.text_buffer.get_end_iter()
         self.text_buffer.insert_with_tags(iter_end, content, self.normal_tag)
+        
+        # Store current content for TTS and other features
+        self.current_content = content
         
         # Build word index for TTS
         self._build_word_index(content)
@@ -621,3 +638,54 @@ class ReaderView(Gtk.Box):
     def get_current_book_path(self):
         """Get current book file path"""
         return self.current_book_path
+    
+    def show_search(self):
+        """Show search functionality (placeholder for now)"""
+        # For now, just show a toast - could be implemented later
+        self.show_error(_("Search functionality not yet implemented"))
+    
+    def previous_page(self):
+        """Go to previous page/chapter"""
+        if self.current_chapter > 0:
+            self.current_chapter -= 1
+            self.display_chapter(self.current_chapter)
+            self.update_navigation()
+    
+    def next_page(self):
+        """Go to next page/chapter"""
+        if self.book_metadata and self.current_chapter < len(self.book_metadata.chapters) - 1:
+            self.current_chapter += 1
+            self.display_chapter(self.current_chapter)
+            self.update_navigation()
+    
+    def first_page(self):
+        """Go to first page/chapter"""
+        if self.book_metadata:
+            self.current_chapter = 0
+            self.display_chapter(self.current_chapter)
+            self.update_navigation()
+    
+    def last_page(self):
+        """Go to last page/chapter"""
+        if self.book_metadata:
+            self.current_chapter = len(self.book_metadata.chapters) - 1
+            self.display_chapter(self.current_chapter)
+            self.update_navigation()
+    
+    def update_font_size(self, font_size):
+        """Update the font size"""
+        if hasattr(self, 'content_label'):
+            font_desc = Pango.FontDescription()
+            font_desc.set_size(font_size * Pango.SCALE)
+            attrs = Pango.AttrList()
+            attrs.insert(Pango.AttrFontDesc.new(font_desc))
+            self.content_label.set_attributes(attrs)
+    
+    def toggle_tts(self):
+        """Toggle TTS play/pause"""
+        if self.tts_engine.is_speaking():
+            self.tts_engine.stop()
+        else:
+            # Start TTS if there's content
+            if hasattr(self, 'current_content') and self.current_content:
+                self.tts_engine.speak(self.current_content)

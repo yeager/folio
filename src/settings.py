@@ -18,9 +18,24 @@ class Settings:
         # Try to use GSettings if schema is installed, otherwise fall back to JSON
         self.use_gsettings = False
         try:
-            self.gsettings = Gio.Settings.new("se.danielnylander.folio")
-            self.use_gsettings = True
-        except:
+            # Set schema dir if specified in environment
+            if 'GSETTINGS_SCHEMA_DIR' in os.environ:
+                schema_source = Gio.SettingsSchemaSource.new_from_directory(
+                    os.environ['GSETTINGS_SCHEMA_DIR'],
+                    Gio.SettingsSchemaSource.get_default(),
+                    False
+                )
+                schema = schema_source.lookup("se.danielnylander.folio", False)
+                if schema:
+                    self.gsettings = Gio.Settings.new_full(schema, None, None)
+                    self.use_gsettings = True
+                else:
+                    raise Exception("Schema not found")
+            else:
+                self.gsettings = Gio.Settings.new("se.danielnylander.folio")
+                self.use_gsettings = True
+        except Exception as e:
+            print(f"Falling back to JSON settings: {e}")
             # Fall back to JSON file in user config directory
             self.config_dir = os.path.join(
                 GLib.get_user_config_dir(), "folio"
@@ -91,7 +106,18 @@ class Settings:
                     # Special handling for complex data
                     self.gsettings.set_string(gsettings_key, json.dumps(value))
                 else:
-                    self.gsettings.set_value(gsettings_key, GLib.Variant.new_python(value))
+                    # Create appropriate GVariant based on value type
+                    if isinstance(value, bool):
+                        variant = GLib.Variant.new_boolean(value)
+                    elif isinstance(value, int):
+                        variant = GLib.Variant.new_int32(value)
+                    elif isinstance(value, float):
+                        variant = GLib.Variant.new_double(value)
+                    elif isinstance(value, str):
+                        variant = GLib.Variant.new_string(value)
+                    else:
+                        variant = GLib.Variant.new_string(str(value))
+                    self.gsettings.set_value(gsettings_key, variant)
             except Exception as e:
                 print(f"Error setting GSettings value {key}: {e}")
         else:

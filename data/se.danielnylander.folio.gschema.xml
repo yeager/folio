@@ -78,5 +78,12 @@
       <description>JSON object storing reading positions for each book</description>
     </key>
     
+    <!-- Welcome screen -->
+    <key name="show-welcome-screen" type="b">
+      <default>true</default>
+      <summary>Show welcome screen</summary>
+      <description>Whether to show the welcome screen on first launch or when library is empty</description>
+    </key>
+    
   </schema>
 </schemalist>

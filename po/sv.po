@@ -263,7 +263,9 @@ msgid "{} of {} books"
 msgstr "{} av {} böcker"
 
 msgid "{} books"
-msgstr "{} böcker"msgid "Speech speed: {}x"
+msgstr "{} böcker"
+
+msgid "Speech speed: {}x"
 msgstr "Talhastighet: {}x"
 
 msgid "Speech speed"
@@ -271,3 +273,109 @@ msgstr "Talhastighet"
 
 msgid "Play/Pause"
 msgstr "Spela/Pausa"
+
+# Keyboard shortcuts
+msgid "File Operations"
+msgstr "Filoperationer"
+
+msgid "Open book file"
+msgstr "Öppna bokfil"
+
+msgid "Navigation"
+msgstr "Navigering"
+
+msgid "Search in book"
+msgstr "Sök i bok"
+
+msgid "Previous page"
+msgstr "Föregående sida"
+
+msgid "Next page"
+msgstr "Nästa sida"
+
+msgid "First page"
+msgstr "Första sidan"
+
+msgid "Last page"
+msgstr "Sista sidan"
+
+msgid "View"
+msgstr "Visa"
+
+msgid "Toggle fullscreen"
+msgstr "Växla helskärm"
+
+msgid "Increase font size"
+msgstr "Öka teckensnittsstorlek"
+
+msgid "Decrease font size"
+msgstr "Minska teckensnittsstorlek"
+
+msgid "Text-to-Speech"
+msgstr "Text-till-tal"
+
+msgid "Play/Pause TTS"
+msgstr "Spela/Pausa TTS"
+
+msgid "Help"
+msgstr "Hjälp"
+
+msgid "Show keyboard shortcuts"
+msgstr "Visa tangentbordsgenvägar"
+
+msgid "Keyboard Shortcuts"
+msgstr "Tangentbordsgenvägar"
+
+# Welcome screen
+msgid "Welcome to Folio"
+msgstr "Välkommen till Folio"
+
+msgid "Open an e-book to start reading, or add books to your library."
+msgstr "Öppna en e-bok för att börja läsa, eller lägg till böcker i ditt bibliotek."
+
+msgid "Add Books Folder"
+msgstr "Lägg till bokmapp"
+
+msgid "Don't show this again"
+msgstr "Visa inte detta igen"
+
+# About dialog
+msgid "Help Translate"
+msgstr "Hjälp med översättning"
+
+# Preferences
+msgid "Choose between light, dark, or system theme"
+msgstr "Välj mellan ljust, mörkt eller systemtema"
+
+msgid "Translation"
+msgstr "Översättning"
+
+msgid "Help translate Folio"
+msgstr "Hjälp med att översätta Folio"
+
+msgid "Help translate Folio into your language"
+msgstr "Hjälp till att översätta Folio till ditt språk"
+
+msgid "Open Transifex"
+msgstr "Öppna Transifex"
+
+# Drag and drop
+msgid "Drop files to import"
+msgstr "Släpp filer för att importera"
+
+msgid "Imported: {}"
+msgstr "Importerade: {}"
+
+msgid "Book already in library"
+msgstr "Bok redan i bibliotek"
+
+msgid "Error importing file: {}"
+msgstr "Fel vid import av fil: {}"
+
+# Accessibility
+msgid "Text-to-Speech Controls"
+msgstr "Text-till-tal-kontroller"
+
+# Search placeholder
+msgid "Search functionality not yet implemented"
+msgstr "Sökfunktionen är ännu inte implementerad"
